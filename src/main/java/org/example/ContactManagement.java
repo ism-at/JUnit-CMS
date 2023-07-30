@@ -1,11 +1,15 @@
+package org.example;
+
+import org.example.Contact;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ContactManagement {
     /*
-    The main reason I've chosen ConcurrentHashMap, because doesn't allow to store null keys or values,
-    and avoid NullPointerException, besides high performance.
+    The main reason I've chosen ConcurrentHashMap, because doesn't allow storing null keys or values,
+    also avoiding NullPointerException, besides high performance.
     */
     Map<String, Contact> contactList = new ConcurrentHashMap<>();
 
@@ -18,13 +22,13 @@ public class ContactManagement {
 
     private void validContact(Contact contact) {
         contact.validFirstName();
-        contact.getLastName();
+        contact.validLastName();
         contact.validPhoneNumber();
     }
 
     private void checkIfContactExist(Contact contact) {
         if(contactList.containsKey(generateKey(contact))){
-            throw new RuntimeException("This will duplicate !");
+            throw new RuntimeException("This will be duplicate !");
         }
     }
 

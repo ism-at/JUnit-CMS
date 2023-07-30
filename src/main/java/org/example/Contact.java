@@ -1,3 +1,5 @@
+package org.example;
+
 public class Contact {
     private String firstName;
     private String lastName;
@@ -35,18 +37,25 @@ public class Contact {
     //-------------------------------------validationMethods---------------------------------------//
     public void validFirstName(){
         if(this.firstName == null){
-            throw new RuntimeException("First name must not be null/empty !");
+            throw new RuntimeException("First name must not be null !");
+        }
+        if(this.firstName.equals("")){
+            throw new RuntimeException("First name must not be empty !");
         }
     }
 
     public void validLastName() {
-        if (this.lastName == null)
+        if (this.lastName == null){
             throw new RuntimeException("Last name must not be null/empty !");
+        }
+        if (this.lastName.equals("")){
+            throw new RuntimeException("Last name must not be empty !");
+        }
     }
 
     public void validPhoneNumber(){
-        if(this.phoneNumber.length() != 10){
-            throw new RuntimeException("Phone number must be 10 digits !");
+        if(this.phoneNumber.length() <= 10){
+            throw new RuntimeException("Phone number must be bigger than 10 digits !");
         }
         if(!this.phoneNumber.matches("\\d+")){
             throw new RuntimeException("Phone number must have only digits !");
